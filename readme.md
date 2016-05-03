@@ -1,5 +1,3 @@
-![The Dojocat](http://octodex.github.com/images/dojocat.jpg "dojocat" =200x200)
-
 # Laravel Routes
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]()
