@@ -1,8 +1,11 @@
 {
     "name": "tohuma/laravel-routes",
-    "description": "Group Url's for routes in laravel",
-    "license": "MIT",
+    "type": "library",
+    "description": "Grouping of routes on laravel",
+    "keywords": ["laravel","routes", "group"],
+    "homepage": "https://github.com/tohuma/laravel-routers",
     "version": "0.1.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "Miguel Cabada",
