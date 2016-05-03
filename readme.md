@@ -1,4 +1,5 @@
-![The Dojocat](http://octodex.github.com/images/dojocat.jpg =250x)
+![The Dojocat](http://octodex.github.com/images/dojocat.jpg)
+
 # Laravel Routes
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]()
@@ -7,7 +8,7 @@ Inspired by [Laravel Multiple Routes](http://laravel-tricks.com/tricks/laravel-5
 
 This package allow grouping routes by namespace, you only need to create a directory with the namespace on "../Http/Controllers/". Also it is necessary to create the file routes.php on that directory.
 
-**This package doesn't disable the default routes of Laravel.**
+`This package doesn't disable the default routes of Laravel.`
 
 ### Required
 
@@ -20,6 +21,12 @@ Run the following command in your terminal:
 
 ```
 composer require tohuma/laravel-routes
+```
+
+Run script composer post-install-cmd:
+
+```
+composer run-script -d=vendor/tohuma/laravel-routes post-install-cmd
 ```
 
 Add **RouteServiceProvider** in **config/app.php**
