@@ -1,4 +1,4 @@
-![The Dojocat](http://octodex.github.com/images/dojocat.jpg)
+![The Dojocat](http://octodex.github.com/images/dojocat.jpg =200x200)
 
 # Laravel Routes
 
