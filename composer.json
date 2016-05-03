@@ -1,0 +1,24 @@
+{
+    "name": "tohuma/laravel-routes",
+    "description": "Group Url's for routes in laravel",
+    "license": "MIT",
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "Miguel Cabada",
+            "email": "tohuma@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Tohuma\\Laravel\\Routes\\": "src/"
+        }
+    },    
+    "minimum-stability": "stable",
+    "require": {},
+    "scripts": {
+        "post-install-cmd": [
+            "php -r \"copy('Config/routes.php', 'config/routes.php');\""
+        ]
+    }
+}
