@@ -16,12 +16,12 @@
         "psr-4": {
             "Tohuma\\Laravel\\Routes\\": "src/"
         }
-    },    
+    },
     "minimum-stability": "stable",
     "require": {},
     "scripts": {
-        "post-install-cmd": [
-            "php -r \"copy('Config/routes.php', 'config/routes.php');\""
+        "post-install-cmd":[
+            "Tohuma\\Laravel\\Routes\\ComposerScripts::postInstall"
         ]
     }
 }
