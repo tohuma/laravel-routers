@@ -19,9 +19,5 @@
     },
     "minimum-stability": "stable",
     "require": {},
-    "scripts": {
-        "post-install-cmd":[
-            "Tohuma\\Laravel\\Routes\\ComposerScripts::postInstall"
-        ]
-    }
+    "scripts": {}
 }
