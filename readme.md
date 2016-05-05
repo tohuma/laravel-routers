@@ -91,7 +91,7 @@ http://<servername>/blog/comments
 ```
 
 ### Version
-0.1.0
+v1.0.0
 
 ### License
 Laravel Routes is licensed The MIT License (MIT).
