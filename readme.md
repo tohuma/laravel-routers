@@ -21,12 +21,6 @@ Run the following command in your terminal:
 composer require tohuma/laravel-routes
 ```
 
-Run script composer post-install-cmd:
-
-```
-composer run-script -d=vendor/tohuma/laravel-routes post-install-cmd
-```
-
 Add **RouteServiceProvider** in **config/app.php**
 
 ``` 
@@ -38,15 +32,7 @@ Add **RouteServiceProvider** in **config/app.php**
 
 ### Example Usage
 
-Open file: **config/routes.php** and add **'blog' => 'App\Http\Controllers\Blog'**
 
-``` 
-<?php
-
-return [
-	'blog' => 'App\Http\Controllers\Blog'
-];
-``` 
 
 Create directory **Blog** in **App\Http\Controllers**.
 
