@@ -5,8 +5,7 @@ namespace Tohuma\Laravel\Routes\Providers;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
-use Tohuma\Laravel\Routes\Exceptions\RouteFileNotFoundException;
-use Tohuma\Laravel\Routes\Exceptions\NamespacesInvalidException;
+use File;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -19,7 +18,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(Router $router)
     {
         //
-
         parent::boot($router);
     }
 
@@ -31,16 +29,12 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map(Router $router)
     {
-        $namespaces = config('routes');
-        if( is_null($namespaces) ) {
-            throw new RouteFileNotFoundException('config/routes.php');
-        }
+        $appName = $this->app->getNamespace();
+        $namespace = "{$appName}Http\\Controllers";
+        $path = app_path( DIRECTORY_SEPARATOR . 'Http' . DIRECTORY_SEPARATOR . 'Controllers');
+        $directories = File::directories( $path );
 
-        if( !is_array($namespaces) ) {
-            throw new NamespacesInvalidException('Namespace list is invalid.');
-        }
-
-
+        $namespaces = $this->builNamespaceRoutes($namespace, $directories);
         $this->mapApplicationRoutes($router, $namespaces);
     }
 
@@ -54,14 +48,37 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApplicationRoutes(Router $router, $namespaces)
     {
-        foreach( $namespaces as $key => $namespace ) {
+        foreach( $namespaces as $prefix => $namespace ) {
             $groupname = substr( $namespace, strrpos($namespace, '\\') + 1, strlen($namespace) );
-            $name = strtolower( $groupname );
 
-            $router->group(['prefix' => $name, 'namespace' => $namespace], function ($router) use ($groupname) {
+            $router->group(['prefix' => $prefix, 'namespace' => $namespace], function ($router) use ($prefix, $groupname) {
 
                 require app_path("Http/Controllers/{$groupname}/routes.php");
             });
         }
     }
+
+    /**
+     * Build namespaces routes for the application.
+     *
+     * @return array
+     */
+    protected function builNamespaceRoutes($namespace, $directories)
+    {
+        $namespaces = [];
+        $path = app_path( DIRECTORY_SEPARATOR . 'Http' . DIRECTORY_SEPARATOR . 'Controllers');
+
+        foreach( $directories as $directory ) {
+            $filename = "{$directory}" . DIRECTORY_SEPARATOR . "routes.php";
+
+            if( File::exists($filename) ) {
+                $groupname = substr( $directory, strrpos($directory, DIRECTORY_SEPARATOR) + 1, strlen($directory) );
+                $prefix = strtolower( $groupname );
+                $namespaces[$prefix] = "{$namespace}\\{$groupname}";
+            }
+        }
+
+        return $namespaces;
+    }
+
 }
