@@ -66,8 +66,6 @@ class RouteServiceProvider extends ServiceProvider
     protected function builNamespaceRoutes($namespace, $directories)
     {
         $namespaces = [];
-        $path = app_path( DIRECTORY_SEPARATOR . 'Http' . DIRECTORY_SEPARATOR . 'Controllers');
-
         foreach( $directories as $directory ) {
             $filename = "{$directory}" . DIRECTORY_SEPARATOR . "routes.php";
 
